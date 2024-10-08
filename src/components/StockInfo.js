@@ -13,14 +13,9 @@ const StockInfo = ({ symbol }) => {
   const [stock, setStock] = useState(null); // State to store stock information
   const [error, setError] = useState(''); // State to handle errors
 
-  /**
-   * useEffect hook to fetch stock data whenever the component mounts or the stock symbol changes.
-   * It triggers an asynchronous function to get stock data from the API and updates the state.
-   * Handles loading, success, and error states.
-   */
+  // Fetch stock data when the component mounts or when the symbol changes
   useEffect(() => {
     const fetchStockData = async () => {
-      console.log(`Fetching stock data for: ${symbol}`); // Log the stock symbol for which data is being fetched
       try {
         const stockData = await getStockQuote(symbol); // Fetch stock data from the API
         console.log(`Fetched data for ${symbol}:`, stockData); // Log the fetched stock data
@@ -47,12 +42,13 @@ const StockInfo = ({ symbol }) => {
   // Display stock information once fetched
   return (
     <Box 
-      borderWidth="1px" 
-      borderRadius="lg" 
+      borderwidth="1px" 
+      borderradius="lg" 
       p={4} 
-      boxShadow="md" 
-      maxWidth="500px" 
+      boxshadow="md" 
+      maxwidth="500px" 
       mx="auto"
+      zindex={1}
     >
       <Heading as="h2" size="lg" mb={4}>
         {symbol}
